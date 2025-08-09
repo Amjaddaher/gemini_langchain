@@ -1,6 +1,6 @@
 name: gemini_langchain
 description: "A Dart/Flutter package that seamlessly connects LangChain’s prompt templating with Gemini AI’s streaming API"
-version: 0.0.1+1
+version: 0.0.1+2
 homepage: https://github.com/Amjaddaher/gemini_langchain.git
 
 environment:

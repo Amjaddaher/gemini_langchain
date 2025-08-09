@@ -7,20 +7,37 @@ It enables AI-driven workflows in your Flutter or Dart applications with both st
 
 ---
 
-## Features
+## Example
 
-- **Easy initialization** with your Gemini API key.
-- **Prompt templates** to structure AI inputs.
-- **Streaming responses** for real-time content generation.
-- Minimal, developer-friendly API.
+For a full working example, see [example/example.dart on GitHub](https://github.com/Amjaddaher/gemini_langchain/blob/main/example/example.dart)
 
 ---
 
-## Getting started
+## Usage
 
-### 1. Install
+```dart
+import 'package:gemini_langchain/gemini_langchain.dart';
 
-Add this to your `pubspec.yaml`:
-```yaml
-dependencies:
-  gemini_langchain: ^0.0.1
+final chain = LangChain(
+  template: '''
+You are a helpful assistant.
+
+Here is data:
+{data}
+
+Question:
+{question}
+''',
+);
+
+void askAI() async {
+  final variables = {
+    'data': 'List of products...',
+    'question': 'What product is best for me?'
+  };
+
+  await for (final chunk in chain.run(variables)) {
+    print('AI response so far: $chunk');
+    // Update your UI progressively here
+  }
+}
